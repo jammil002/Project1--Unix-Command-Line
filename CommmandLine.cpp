@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <sys/wait.h>
 
 // function prototypes
@@ -16,6 +17,13 @@ int HandleInput();
 void HandleTokenization();
 void HandleExecute();
 void CommandLine();
+int main();
+
+// global variables
+size_t total = 0;
+char *userInput = NULL;
+char *tokenArray[256];
+char *tokens;
 
 // function that contains commandline information
 void CommandLine()
@@ -26,7 +34,8 @@ void CommandLine()
     printf("-                Enter a single command or                  -\n");
     printf("-           A list of commands seperated by a ';'           -\n");
     printf("-------------------------------------------------------------\n");
-    if (HandleInput() == 1)
+    int quit = HandleInput();
+    if (quit == 1)
     {
         CommandLine();
     }
@@ -35,24 +44,27 @@ void CommandLine()
 // function scans user input then sends it to be tokenized
 int HandleInput()
 {
-    char userInput;
-    scanf("%c", &userInput);
+    int result = getline(&userInput, &total, stdin);
 
-    if (userInput == '0')
+    if (result == -1)
     {
+        printf("EOF detected, quitting...\n");
         return 0;
     }
 
-    HandleTokenization(userInput);
+    if (strcmp(userInput, "0") == 0)
+    {
+        return 0;
+    }
+    HandleTokenization();
 
     return 1;
 }
 
 // function splits up input into individual
-void HandleTokenization(char *userInput)
+void HandleTokenization()
 {
-    char *tokenArray[256];
-    char *tokens;
+
     int i = 0;
 
     tokens = strtok(userInput, "\n ");
@@ -62,12 +74,25 @@ void HandleTokenization(char *userInput)
         tokens = strtok(NULL, "\n ");
     }
     tokenArray[i] = NULL;
-    HandleExecute(tokenArray);
+    HandleExecute();
 }
 
-void HandleExecute(char *tokens)
+void HandleExecute()
 {
     int nProcess = fork();
+    if (nProcess != 0)
+    {
+        int wait;
+        waitpid(-1, &wait, 0);
+    }
+    else
+    {
+        if (execvp(tokenArray[0], tokenArray) == -1)
+        {
+            perror("Wrong command");
+            exit(errno);
+        }
+    }
 }
 
 int main()

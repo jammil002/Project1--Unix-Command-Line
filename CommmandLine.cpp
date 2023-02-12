@@ -20,25 +20,34 @@ void CommandLine();
 int main();
 
 // global variables
-size_t total = 0;
+size_t total = 5;
 char *userInput = NULL;
 char *tokenArray[256];
 char *tokens;
+bool isFirstRun = true;
 
 // function that contains commandline information
 void CommandLine()
 {
-    printf("-------------------------------------------------------------\n");
-    printf("-             Project 1: Command Line Interface             -\n");
-    printf("-                   To leave type 0 or                      -\n");
-    printf("-                Enter a single command or                  -\n");
-    printf("-           A list of commands seperated by a ';'           -\n");
-    printf("-------------------------------------------------------------\n");
-    int quit = HandleInput();
-    if (quit == 1)
+    if (isFirstRun)
     {
-        CommandLine();
+        printf("-------------------------------------------------------------\n");
+        printf("-             Project 1: Command Line Interface             -\n");
+        printf("-                   To leave type 'q' or                    -\n");
+        printf("-                Enter a single command or                  -\n");
+        printf("-           A list of commands seperated by a ';'           -\n");
+        printf("-------------------------------------------------------------\n");
+        isFirstRun = false;
     }
+    printf("Turtle Shell >> ");
+    int quit = HandleInput();
+
+    if (quit == 0)
+    {
+        return;
+    }
+
+    CommandLine();
 }
 
 // function scans user input then sends it to be tokenized
@@ -56,6 +65,7 @@ int HandleInput()
     {
         return 0;
     }
+
     HandleTokenization();
 
     return 1;
@@ -74,6 +84,7 @@ void HandleTokenization()
         tokens = strtok(NULL, "\n ");
     }
     tokenArray[i] = NULL;
+    free(userInput);
     HandleExecute();
 }
 

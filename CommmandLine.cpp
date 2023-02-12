@@ -12,21 +12,18 @@
 #include <errno.h>
 #include <sys/wait.h>
 
-// function prototypes
+// Function Prototypes
 int HandleInput();
-void HandleTokenization();
+void HandleTokenization(char userInput[]);
 void HandleExecute();
 void CommandLine();
-int main();
 
-// global variables
+// Global Variables
 size_t total = 5;
-char *userInput = NULL;
 char *tokenArray[256];
-char *tokens;
 bool isFirstRun = true;
 
-// function that contains commandline information
+// Function that contains shell display:
 void CommandLine()
 {
     if (isFirstRun)
@@ -50,10 +47,12 @@ void CommandLine()
     CommandLine();
 }
 
-// function scans user input then sends it to be tokenized
+// Function scans user input then sends it to be tokenized:
 int HandleInput()
 {
-    int result = getline(&userInput, &total, stdin);
+    size_t bufsize = 32;
+    char userInput[128];
+    int result = getline(userInput, &bufsize, stdin);
 
     if (result == -1)
     {
@@ -61,48 +60,53 @@ int HandleInput()
         return 0;
     }
 
-    if (strcmp(userInput, "0") == 0)
+    if (userInput[1] == 'q')
     {
         return 0;
     }
 
-    HandleTokenization();
+    HandleTokenization(userInput);
 
     return 1;
 }
 
-// function splits up input into individual
-void HandleTokenization()
+// Function splits up input into individual commands:
+void HandleTokenization(char userInput[])
 {
-
+    char *tokens;
     int i = 0;
 
     tokens = strtok(userInput, "\n ");
     while (tokens != NULL)
     {
-        tokenArray[i++] = tokens; // Add tokens into the array
+        tokenArray[i++] = tokens;
         tokens = strtok(NULL, "\n ");
     }
     tokenArray[i] = NULL;
-    free(userInput);
     HandleExecute();
 }
 
 void HandleExecute()
 {
-    int nProcess = fork();
-    if (nProcess != 0)
+    //** Fork creates a child process
+    int childStatus;
+    pid_t childProcess = fork();
+    if (childProcess == 0)
     {
-        int wait;
-        waitpid(-1, &wait, 0);
+        //** This is handled by the child process.
+        execvp(tokenArray[0], tokenArray);
+
+        //** If the execvp command returns, there must of been an error.
+        perror("Unknown command. \n");
+        exit(errno);
     }
     else
     {
-        if (execvp(tokenArray[0], tokenArray) == -1)
-        {
-            perror("Wrong command");
-            exit(errno);
-        }
+        //** This is then handled by the parent process.
+        //** We must wait for the child process to finish.
+        pid_t tpid = wait(&childStatus);
+
+        // After the waiting is complete the process will move on.
     }
 }
 

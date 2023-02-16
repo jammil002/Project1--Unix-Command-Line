@@ -12,7 +12,7 @@ This program is a simple command line interpreter, also known as a shell. The us
 
 The program starts by defining several functions: execute_commands, handle_input, batch_mode, end_execution, command_line, and tokenize_input.
 
-##### Functions
+#### Functions
 
 The main function checks if the program was run in batch mode or command line mode by checking the number of command line arguments. If a batch file was provided, it opens the file and calls batch_mode with the file pointer. If no arguments were provided, it calls command_line.
 

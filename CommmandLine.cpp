@@ -139,7 +139,7 @@ void command_line()
 void tokenize_input(char *input, char *tokens[], int *num_tokens)
 {
     char *token;
-    // Strings are to
+    // User input is tokenized base on ; or \n.
     token = strtok(input, " ;\n");
     while (token != NULL && *num_tokens < MAX_COMMANDS)
     {

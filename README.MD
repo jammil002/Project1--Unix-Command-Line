@@ -25,3 +25,5 @@ The **end_execution** function prints a message indicating that the shell is exi
 The **command_line** function starts the command line interface. It prints a welcome message and a prompt, then reads input from the user using fgets. It then calls handle_input with the user's input.
 
 The **tokenize_input** function takes a string input, an array of tokens, and a pointer to the number of tokens. It uses strtok to tokenize the input by spaces, semicolons, and newlines, and adds each token to the array. The function stops adding tokens when it reaches the end of the input or the maximum number of tokens (defined as MAX_COMMANDS). It then sets the last token in the array to NULL.
+
+#### Screenshots

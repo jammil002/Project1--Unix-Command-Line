@@ -27,3 +27,5 @@ The **command_line** function starts the command line interface. It prints a wel
 The **tokenize_input** function takes a string input, an array of tokens, and a pointer to the number of tokens. It uses strtok to tokenize the input by spaces, semicolons, and newlines, and adds each token to the array. The function stops adding tokens when it reaches the end of the input or the maximum number of tokens (defined as MAX_COMMANDS). It then sets the last token in the array to NULL.
 
 #### Screenshots
+<img width="874" alt="Screenshot 2023-02-17 at 9 36 11 AM" src="https://user-images.githubusercontent.com/68131997/219711900-63d4e6fc-8ac4-4e44-9fcc-c95aee5c4921.png">
+<img width="857" alt="Screenshot 2023-02-17 at 9 36 25 AM" src="https://user-images.githubusercontent.com/68131997/219711920-69f30255-8a3f-4693-83f6-6542276fcdeb.png">

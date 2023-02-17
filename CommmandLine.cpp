@@ -6,11 +6,17 @@
 
 #define MAX_COMMANDS 10
 
+// Function to execute commands.
 void execute_commands(char *commands[], int num_commands);
+// Handle user input.
 void handle_input(char *input);
+// Hand the batch input.
 void batch_mode(FILE *batch_file);
+// Function is hit when user ends using 'exit'.
 void end_execution();
+// First function called after main. Begins CLI process.
 void command_line();
+// Tokenize and prepare commands for execution.
 void tokenize_input(char *input, char *tokens[], int *num_tokens);
 
 // Batch mode is determined by the amount of inputs.
@@ -122,6 +128,7 @@ void end_execution()
 void command_line()
 {
     char input[256];
+    // Prints needed CLI information.
     printf("-------------------------------------------------------------\n");
     printf("-             Project 1: Command Line Interface             -\n");
     printf("-                   To leave type 'exit' or                 -\n");
@@ -146,5 +153,6 @@ void tokenize_input(char *input, char *tokens[], int *num_tokens)
         tokens[(*num_tokens)++] = token;
         token = strtok(NULL, " ;\n");
     }
+    // Token must end with a null.
     tokens[*num_tokens] = NULL;
 }

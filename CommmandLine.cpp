@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 
 #define MAX_COMMANDS 10
+#define MAX_INPUT_LENGTH 256
 
 // Function to execute commands.
 void execute_commands(char *commands[], int num_commands);
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
         }
         else
         {
-            fprintf(stderr, "Error opening batch file.\n");
+            fprintf(stderr, "Error opening batch file '%s'.\n", argv[1]);
             exit(EXIT_FAILURE);
         }
     }
@@ -138,7 +139,17 @@ void command_line()
     while (1)
     {
         printf("Turtle Shell >> ");
-        fgets(input, sizeof(input), stdin);
+
+        if (fgets(input, sizeof(input), stdin) == NULL)
+        {
+            fprintf(stderr, "Error reading input.\n");
+            exit(EXIT_FAILURE);
+        }
+        if (strlen(input) > MAX_INPUT_LENGTH - 1)
+        {
+            fprintf(stderr, "Input exceeds maximum length.\n");
+            continue;
+        }
         handle_input(input);
     }
 }

@@ -15,6 +15,8 @@ void handle_input(char *input);
 void batch_mode(FILE *batch_file);
 // Function is hit when user ends using 'exit'.
 void end_execution();
+// Get help from CLI menu.
+void getHelp();
 // First function called after main. Begins CLI process.
 void command_line();
 // Tokenize and prepare commands for execution.
@@ -49,40 +51,37 @@ int main(int argc, char **argv)
 // commands to execute, then forks a new process for each command and executes it.
 void execute_commands(char *commands[], int num_commands)
 {
-    pid_t pid;
-    int status;
     int i;
+    int pids[num_commands];
 
-    // This will loop through the commands. Creating a child and parent process.
-    // The child process will run the command while the parent process will continue after.
     for (i = 0; i < num_commands; i++)
     {
         char *command = commands[i];
-        pid = fork();
-        // Fork between parent and child process.
-        if (pid < 0)
+        pids[i] = fork();
+
+        if (pids[i] < 0)
         {
             fprintf(stderr, "Fork failed.\n");
             exit(EXIT_FAILURE);
         }
-        else if (pid == 0)
+        else if (pids[i] == 0)
         {
             char *tokens[MAX_COMMANDS];
             int num_tokens = 0;
-            // Commands are tokenized to correctlye be ran.
+
             tokenize_input(command, tokens, &num_tokens);
             if (execvp(tokens[0], tokens) < 0)
             {
-                // If command get here child process has failed.
                 fprintf(stderr, "Error executing command: %s\n", tokens[0]);
                 exit(EXIT_FAILURE);
             }
         }
-        while (wait(&status) > 0)
-        {
-            // Wait for child processes to complete.
-        }
     }
+
+    // Wait for all child processes to complete.
+    while (wait(NULL) != -1)
+    {
+    };
 }
 
 void handle_input(char *input)
@@ -101,6 +100,10 @@ void handle_input(char *input)
     if (strcmp(tokens[0], "exit") == 0)
     {
         end_execution();
+    }
+    else if (strcmp(tokens[0], "help") == 0)
+    {
+        getHelp();
     }
     else
     {
@@ -126,15 +129,25 @@ void end_execution()
     exit(EXIT_SUCCESS);
 }
 
+void getHelp()
+{
+    printf("-------------------------------------------------------------\n");
+    printf("-                      Turtle Shell Help                    -\n");
+    printf("-            1. Handles all General Unix Commands.          -\n");
+    printf("-          2. Handles Improper Spacing and other Errors.    -\n");
+    printf("-              3. Handles Commands via Forking.             -\n");
+    printf("-------------------------------------------------------------\n");
+}
+
 void command_line()
 {
     char input[256];
     // Prints needed CLI information.
     printf("-------------------------------------------------------------\n");
     printf("-             Project 1: Command Line Interface             -\n");
-    printf("-                   To leave type 'exit' or                 -\n");
-    printf("-                Enter a single command or                  -\n");
-    printf("-           A list of commands seperated by a ';'           -\n");
+    printf("-                       Turtle Shell                        -\n");
+    printf("-                 Exit (exit) | Help (help)                 -\n");
+    printf("-              Single Command | Multi-Command (<1>;<2>)     -\n");
     printf("-------------------------------------------------------------\n");
     while (1)
     {

@@ -20,6 +20,8 @@ The **handle_input** function takes a string input and tokenizes it using tokeni
 
 The **batch_mode** function takes a file pointer to a batch file and reads each line from the file. For each line, the function prints the line and calls handle_input with the line as input.
 
+The **getHelp** function will give you needed information and help. 
+
 The **end_execution** function prints a message indicating that the shell is exiting, then exits the program.
 
 The **command_line** function starts the command line interface. It prints a welcome message and a prompt, then reads input from the user using fgets. It then calls handle_input with the user's input.

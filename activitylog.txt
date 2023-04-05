@@ -1,0 +1,419 @@
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resouProcess 1 acquired resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 4 is waiting for resource
+Process 5 is waiting for resource
+Process 4 is waiting for resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 3 is waiting for resource
+Process 4 is waiting for resource
+Process 1 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 5 is waiting for resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 1 acquired rProcess 1 acquired resource
+Process 2 is waiting for resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 2 acquired resource
+Process 2 released resource
+Process 1 acquired resource
+Process 2 is waiting for resource
+Process 1 released resource
+Process 2 acquired resource
+Process 2 released resource

@@ -1,0 +1,120 @@
+Page fault occurred, loaded page 0 into frame 0
+String: 
+Page fault occurred, loaded page 2 into frame 1
+String: 
+Page fault occurred, loaded page 3 into frame 2
+String: 
+Page fault occurred, loaded page 5 into frame 3
+String: 
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 2 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+Page fault occurred, loaded page 5 into frame 3
+String:  allocated to frame 3
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+
+Page fault occurred, loaded page 0 into frame 0
+String:  allocated to frame 0
+Page fault occurred, loaded page 1 into frame 1
+String:  allocated to frame 1
+Page fault occurred, loaded page 3 into frame 2
+String:  allocated to frame 2
+String:  allocated to frame 0
+
+Hello World!
+Hello World!
+Hello World!

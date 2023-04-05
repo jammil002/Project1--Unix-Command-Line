@@ -7,20 +7,42 @@
 #define MAX_COMMANDS 10
 #define MAX_INPUT_LENGTH 256
 
-// Function to execute commands.
-void execute_commands(char *commands[], int num_commands);
-// Handle user input.
-void handle_input(char *input);
-// Hand the batch input.
-void batch_mode(FILE *batch_file);
-// Function is hit when user ends using 'exit'.
-void end_execution();
-// Get help from CLI menu.
-void getHelp();
-// First function called after main. Begins CLI process.
-void command_line();
-// Tokenize and prepare commands for execution.
-void tokenize_input(char *input, char *tokens[], int *num_tokens);
+void ExecuteCommands(char *commands[], int num_commands);
+void HandleInput(char *input);
+void BatchMode(FILE *batch_file);
+void EndExecution();
+void GetHelp();
+void CommandLine();
+void TokenizeInput(char *input, char *tokens[], int *num_tokens);
+
+// File Directory Functions
+void CreateDirectory(char *dirname);
+void RenameDirectory(char *dirname, char *newName);
+void DeleteDirectory(char *dirname);
+void CreateFile(char *fileName);
+void RenameFile(char *fileName, char *newName);
+void EditFile(char *fileName);
+void DeleteFile(char *fileName);
+void MoveFile(char *sourceFile, char *destinationFile);
+void DuplicateFile(char *sourceFile, char *destinationFile);
+void SearchFile(char *dirName, char *fileName);
+void DisplayDirectoryTree(char *dirName);
+void GetBasicFileInformation(char *fileName);
+void GetAdvancedFileInformation(char *fileName);
+void GetBasicDirectoryInformation(char *dirName);
+void GetAdvancedDirectoryInformation(char *dirName);
+
+// File Directory Data Structures
+typedef struct FileNode
+{
+    char charName[MAX_INPUT_LENGTH];
+    int isDirectory;
+    struct FileNode *next;
+
+} FileNode;
+
+// ! Global Variables
+FileNode *fileDirectory = NULL;
 
 // Batch mode is determined by the amount of inputs.
 int main(int argc, char **argv)
@@ -31,7 +53,7 @@ int main(int argc, char **argv)
         FILE *batch_file = fopen(argv[1], "r");
         if (batch_file)
         {
-            batch_mode(batch_file);
+            BatchMode(batch_file);
             fclose(batch_file);
         }
         else
@@ -42,14 +64,14 @@ int main(int argc, char **argv)
     }
     else
     {
-        command_line();
+        CommandLine();
     }
     return 0;
 }
 
-// The execute_commands function takes an array of commands and the number of
+// The ExecuteCommands function takes an array of commands and the number of
 // commands to execute, then forks a new process for each command and executes it.
-void execute_commands(char *commands[], int num_commands)
+void ExecuteCommands(char *commands[], int num_commands)
 {
     int i;
     int pids[num_commands];
@@ -69,7 +91,7 @@ void execute_commands(char *commands[], int num_commands)
             char *tokens[MAX_COMMANDS];
             int num_tokens = 0;
 
-            tokenize_input(command, tokens, &num_tokens);
+            TokenizeInput(command, tokens, &num_tokens);
             if (execvp(tokens[0], tokens) < 0)
             {
                 fprintf(stderr, "Error executing command: %s\n", tokens[0]);
@@ -84,11 +106,11 @@ void execute_commands(char *commands[], int num_commands)
     };
 }
 
-void handle_input(char *input)
+void HandleInput(char *input)
 {
     char *tokens[MAX_COMMANDS];
     int num_tokens = 0;
-    tokenize_input(input, tokens, &num_tokens);
+    TokenizeInput(input, tokens, &num_tokens);
 
     // Handle input based on if exit or command is entered.
 
@@ -99,37 +121,93 @@ void handle_input(char *input)
 
     if (strcmp(tokens[0], "exit") == 0)
     {
-        end_execution();
+        EndExecution();
     }
     else if (strcmp(tokens[0], "help") == 0)
     {
-        getHelp();
+        GetHelp();
+    }
+    else if (strcmp(tokens[0], "cdir") == 0)
+    {
+        CreateDirectory(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "rdir") == 0)
+    {
+        RenameDirectory(tokens[1], tokens[2]);
+    }
+    else if (strcmp(tokens[0], "ddir") == 0)
+    {
+        DeleteDirectory(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "cfile") == 0)
+    {
+        CreateFile(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "rfile") == 0)
+    {
+        RenameFile(tokens[1], tokens[2]);
+    }
+    else if (strcmp(tokens[0], "dfile") == 0)
+    {
+        DeleteFile(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "mfile") == 0)
+    {
+        MoveFile(tokens[1], tokens[2]);
+    }
+    else if (strcmp(tokens[0], "dupfile") == 0)
+    {
+        DuplicateFile(tokens[1], tokens[2]);
+    }
+    else if (strcmp(tokens[0], "sfile") == 0)
+    {
+        SearchFile(tokens[1], tokens[2]);
+    }
+    else if (strcmp(tokens[0], "dirtree") == 0)
+    {
+        DisplayDirectoryTree(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "gbfinfo") == 0)
+    {
+        GetBasicFileInformation(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "gafinfo") == 0)
+    {
+        GetAdvancedFileInformation(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "gbdinfo") == 0)
+    {
+        GetBasicDirectoryInformation(tokens[1]);
+    }
+    else if (strcmp(tokens[0], "gadinfo") == 0)
+    {
+        GetAdvancedDirectoryInformation(tokens[1]);
     }
     else
     {
-        execute_commands(tokens, num_tokens);
+        ExecuteCommands(tokens, num_tokens);
     }
 }
 
-void batch_mode(FILE *batch_file)
+void BatchMode(FILE *batch_file)
 {
     char line[256];
     // Loop through input of batch file.
     while (fgets(line, sizeof(line), batch_file))
     {
         printf("%s", line);
-        handle_input(line);
+        HandleInput(line);
     }
 }
 
 // Function will end the process.
-void end_execution()
+void EndExecution()
 {
     printf("Exiting shell.\n");
     exit(EXIT_SUCCESS);
 }
 
-void getHelp()
+void GetHelp()
 {
     printf("-------------------------------------------------------------\n");
     printf("-                      Turtle Shell Help                    -\n");
@@ -139,7 +217,7 @@ void getHelp()
     printf("-------------------------------------------------------------\n");
 }
 
-void command_line()
+void CommandLine()
 {
     char input[256];
     // Prints needed CLI information.
@@ -163,11 +241,11 @@ void command_line()
             fprintf(stderr, "Input exceeds maximum length.\n");
             continue;
         }
-        handle_input(input);
+        HandleInput(input);
     }
 }
 
-void tokenize_input(char *input, char *tokens[], int *num_tokens)
+void TokenizeInput(char *input, char *tokens[], int *num_tokens)
 {
     char *token;
     // User input is tokenized base on ; or \n.

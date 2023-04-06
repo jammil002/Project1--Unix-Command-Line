@@ -129,59 +129,145 @@ void HandleInput(char *input)
     }
     else if (strcmp(tokens[0], "cdir") == 0)
     {
-        CreateDirectory(tokens[1]);
+        try
+        {
+            CreateDirectory(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Create Directory Command Syntax - cdir <directory-name>" );
+        }  
     }
     else if (strcmp(tokens[0], "rdir") == 0)
     {
-        RenameDirectory(tokens[1], tokens[2]);
+        try
+        {
+            RenameDirectory(tokens[1], tokens[2]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Rename Directory Command Syntax - rdir <old-directory-name> <new-directory-name>" );
+        }
     }
     else if (strcmp(tokens[0], "ddir") == 0)
     {
-        DeleteDirectory(tokens[1]);
+        try
+        {
+            DeleteDirectory(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Delete Directory Command Syntax - ddir <directory-name>" );
+        }
     }
     else if (strcmp(tokens[0], "cfile") == 0)
     {
-        CreateFile(tokens[1]);
+        try
+        {
+            CreateFile(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Create File Command Syntax - cfile <file-name>" );
+        }
     }
     else if (strcmp(tokens[0], "rfile") == 0)
     {
-        RenameFile(tokens[1], tokens[2]);
+        try
+        {
+            RenameFile(tokens[1], tokens[2]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Rename File Command Syntax - rfile <old-file-name> <new-file-name>" );
+        }
     }
     else if (strcmp(tokens[0], "dfile") == 0)
     {
-        DeleteFile(tokens[1]);
+        try
+        {
+            DeleteFile(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Delete File Command Syntax - dfile <file-name>" );
+        }
     }
     else if (strcmp(tokens[0], "mfile") == 0)
     {
-        MoveFile(tokens[1], tokens[2]);
+        try
+        {
+            MoveFile(tokens[1], tokens[2]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Move File Command Syntax - mfile <source-file> <destination-file>" );
+        }
     }
     else if (strcmp(tokens[0], "dupfile") == 0)
     {
-        DuplicateFile(tokens[1], tokens[2]);
+        try
+        {
+            DuplicateFile(tokens[1], tokens[2]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Duplicate File Command Syntax - dfile <source-file> <destination-file>" );
+        }
     }
     else if (strcmp(tokens[0], "sfile") == 0)
     {
-        SearchFile(tokens[1], tokens[2]);
+        try
+        {
+            SearchFile(tokens[1], tokens[2]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Search File Command Syntax - dfile <file-name> <directory-name>");
+        }
     }
     else if (strcmp(tokens[0], "dirtree") == 0)
     {
-        DisplayDirectoryTree(tokens[1]);
+        try
+        {
+            DisplayDirectoryTree(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Display Directory Command Syntax - dirtree <directory-name>");
+        }
     }
     else if (strcmp(tokens[0], "gbfinfo") == 0)
     {
-        GetBasicFileInformation(tokens[1]);
+        try
+        {
+            GetBasicFileInformation(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Get Basic File Info Command Syntax - gbfinfo <file-name>");
+        }
+        
     }
     else if (strcmp(tokens[0], "gafinfo") == 0)
     {
-        GetAdvancedFileInformation(tokens[1]);
+        try
+        {
+            GetAdvancedFileInformation(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Get Advanced File Info Command Syntax - gafinfo <file-name>");
+        }
     }
     else if (strcmp(tokens[0], "gbdinfo") == 0)
     {
-        GetBasicDirectoryInformation(tokens[1]);
+        try
+        {
+            GetBasicDirectoryInformation(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Get Basic Directory Info Command Syntax - gbdinfo <directory-name>");
+        }
     }
     else if (strcmp(tokens[0], "gadinfo") == 0)
     {
-        GetAdvancedDirectoryInformation(tokens[1]);
+        try
+        {
+            GetAdvancedDirectoryInformation(tokens[1]);
+        }
+        catch(const std::exception& e) {
+            printf("TurtleError > Get Advanced Directory Info Command Syntax - gadinfo <directory-name>");
+        }
+        
     }
     else
     {

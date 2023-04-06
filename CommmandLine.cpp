@@ -344,3 +344,20 @@ void TokenizeInput(char *input, char *tokens[], int *num_tokens)
     // Token must end with a null.
     tokens[*num_tokens] = NULL;
 }
+
+// File Functions
+void CreateDirectory(char *dirname) {}
+void RenameDirectory(char *dirname, char *newName) {}
+void DeleteDirectory(char *dirname) {}
+void CreateFile(char *fileName) {}
+void RenameFile(char *fileName, char *newName) {}
+void EditFile(char *fileName) {}
+void DeleteFile(char *fileName) {}
+void MoveFile(char *sourceFile, char *destinationFile) {}
+void DuplicateFile(char *sourceFile, char *destinationFile) {}
+void SearchFile(char *dirName, char *fileName) {}
+void DisplayDirectoryTree(char *dirName) {}
+void GetBasicFileInformation(char *fileName) {}
+void GetAdvancedFileInformation(char *fileName) {}
+void GetBasicDirectoryInformation(char *dirName) {}
+void GetAdvancedDirectoryInformation(char *dirName) {} 

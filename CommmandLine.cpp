@@ -3,6 +3,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <filesystem>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #define MAX_COMMANDS 10
 #define MAX_INPUT_LENGTH 256
@@ -133,9 +136,10 @@ void HandleInput(char *input)
         {
             CreateDirectory(tokens[1]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Create Directory Command Syntax - cdir <directory-name>" );
-        }  
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Create Directory Command Syntax - cdir <directory-name>");
+        }
     }
     else if (strcmp(tokens[0], "rdir") == 0)
     {
@@ -143,8 +147,9 @@ void HandleInput(char *input)
         {
             RenameDirectory(tokens[1], tokens[2]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Rename Directory Command Syntax - rdir <old-directory-name> <new-directory-name>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Rename Directory Command Syntax - rdir <old-directory-name> <new-directory-name>");
         }
     }
     else if (strcmp(tokens[0], "ddir") == 0)
@@ -153,8 +158,9 @@ void HandleInput(char *input)
         {
             DeleteDirectory(tokens[1]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Delete Directory Command Syntax - ddir <directory-name>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Delete Directory Command Syntax - ddir <directory-name>");
         }
     }
     else if (strcmp(tokens[0], "cfile") == 0)
@@ -163,8 +169,9 @@ void HandleInput(char *input)
         {
             CreateFile(tokens[1]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Create File Command Syntax - cfile <file-name>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Create File Command Syntax - cfile <file-name>");
         }
     }
     else if (strcmp(tokens[0], "rfile") == 0)
@@ -173,8 +180,9 @@ void HandleInput(char *input)
         {
             RenameFile(tokens[1], tokens[2]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Rename File Command Syntax - rfile <old-file-name> <new-file-name>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Rename File Command Syntax - rfile <old-file-name> <new-file-name>");
         }
     }
     else if (strcmp(tokens[0], "dfile") == 0)
@@ -183,8 +191,9 @@ void HandleInput(char *input)
         {
             DeleteFile(tokens[1]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Delete File Command Syntax - dfile <file-name>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Delete File Command Syntax - dfile <file-name>");
         }
     }
     else if (strcmp(tokens[0], "mfile") == 0)
@@ -193,8 +202,9 @@ void HandleInput(char *input)
         {
             MoveFile(tokens[1], tokens[2]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Move File Command Syntax - mfile <source-file> <destination-file>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Move File Command Syntax - mfile <source-file> <destination-file>");
         }
     }
     else if (strcmp(tokens[0], "dupfile") == 0)
@@ -203,8 +213,9 @@ void HandleInput(char *input)
         {
             DuplicateFile(tokens[1], tokens[2]);
         }
-        catch(const std::exception& e) {
-            printf("TurtleError > Duplicate File Command Syntax - dfile <source-file> <destination-file>" );
+        catch (const std::exception &e)
+        {
+            printf("TurtleError > Duplicate File Command Syntax - dfile <source-file> <destination-file>");
         }
     }
     else if (strcmp(tokens[0], "sfile") == 0)
@@ -213,7 +224,8 @@ void HandleInput(char *input)
         {
             SearchFile(tokens[1], tokens[2]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Search File Command Syntax - dfile <file-name> <directory-name>");
         }
     }
@@ -223,7 +235,8 @@ void HandleInput(char *input)
         {
             DisplayDirectoryTree(tokens[1]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Display Directory Command Syntax - dirtree <directory-name>");
         }
     }
@@ -233,10 +246,10 @@ void HandleInput(char *input)
         {
             GetBasicFileInformation(tokens[1]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Get Basic File Info Command Syntax - gbfinfo <file-name>");
         }
-        
     }
     else if (strcmp(tokens[0], "gafinfo") == 0)
     {
@@ -244,7 +257,8 @@ void HandleInput(char *input)
         {
             GetAdvancedFileInformation(tokens[1]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Get Advanced File Info Command Syntax - gafinfo <file-name>");
         }
     }
@@ -254,7 +268,8 @@ void HandleInput(char *input)
         {
             GetBasicDirectoryInformation(tokens[1]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Get Basic Directory Info Command Syntax - gbdinfo <directory-name>");
         }
     }
@@ -264,10 +279,10 @@ void HandleInput(char *input)
         {
             GetAdvancedDirectoryInformation(tokens[1]);
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             printf("TurtleError > Get Advanced Directory Info Command Syntax - gadinfo <directory-name>");
         }
-        
     }
     else
     {
@@ -346,9 +361,69 @@ void TokenizeInput(char *input, char *tokens[], int *num_tokens)
 }
 
 // File Functions
-void CreateDirectory(char *dirname) {}
-void RenameDirectory(char *dirname, char *newName) {}
-void DeleteDirectory(char *dirname) {}
+void CreateDirectory(char *dirname)
+{
+    if (mkdir(dirname, 0755) < 0)
+    {
+        perror("Error creating directory");
+        return;
+    }
+    // Add the new directory to the internal file directory
+    FileNode *new_dir = (FileNode *)malloc(sizeof(FileNode));
+    strncpy(new_dir->charName, dirname, MAX_INPUT_LENGTH);
+    new_dir->isDirectory = 1;
+    new_dir->next = fileDirectory;
+    fileDirectory = new_dir;
+}
+void RenameDirectory(char *dirname, char *newName)
+{
+    if (rename(dirname, newName) < 0)
+    {
+        perror("Error renaming directory");
+        return;
+    }
+
+    // Update the directory name in the internal file directory
+    FileNode *cur = fileDirectory;
+    while (cur != NULL)
+    {
+        if (strcmp(cur->charName, dirname) == 0 && cur->isDirectory)
+        {
+            strncpy(cur->charName, newName, MAX_INPUT_LENGTH);
+            break;
+        }
+        cur = cur->next;
+    }
+}
+void DeleteDirectory(char *dirname)
+{
+    if (rmdir(dirname) < 0)
+    {
+        perror("Error deleting directory");
+        return;
+    }
+
+    // Remove the directory from the internal file directory
+    FileNode *prev = NULL, *cur = fileDirectory;
+    while (cur != NULL)
+    {
+        if (strcmp(cur->charName, dirname) == 0 && cur->isDirectory)
+        {
+            if (prev == NULL)
+            {
+                fileDirectory = cur->next;
+            }
+            else
+            {
+                prev->next = cur->next;
+            }
+            free(cur);
+            break;
+        }
+        prev = cur;
+        cur = cur->next;
+    }
+}
 void CreateFile(char *fileName) {}
 void RenameFile(char *fileName, char *newName) {}
 void EditFile(char *fileName) {}
@@ -360,4 +435,4 @@ void DisplayDirectoryTree(char *dirName) {}
 void GetBasicFileInformation(char *fileName) {}
 void GetAdvancedFileInformation(char *fileName) {}
 void GetBasicDirectoryInformation(char *dirName) {}
-void GetAdvancedDirectoryInformation(char *dirName) {} 
+void GetAdvancedDirectoryInformation(char *dirName) {}

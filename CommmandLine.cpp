@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 
 #define MAX_COMMANDS 10
 #define MAX_INPUT_LENGTH 256
@@ -369,11 +370,11 @@ void CreateDirectory(char *dirname)
         return;
     }
     // Add the new directory to the internal file directory
-    FileNode *new_dir = (FileNode *)malloc(sizeof(FileNode));
-    strncpy(new_dir->charName, dirname, MAX_INPUT_LENGTH);
-    new_dir->isDirectory = 1;
-    new_dir->next = fileDirectory;
-    fileDirectory = new_dir;
+    FileNode *newDir = (FileNode *)malloc(sizeof(FileNode));
+    strncpy(newDir->charName, dirname, MAX_INPUT_LENGTH);
+    newDir->isDirectory = 1;
+    newDir->next = fileDirectory;
+    fileDirectory = newDir;
 }
 void RenameDirectory(char *dirname, char *newName)
 {
@@ -424,15 +425,84 @@ void DeleteDirectory(char *dirname)
         cur = cur->next;
     }
 }
+
+void RenameFile(char *fileName, char *newName)
+{
+    if (rename(fileName, newName) < 0)
+    {
+        perror("Error renaming file");
+        return;
+    }
+}
+void DeleteFile(char *fileName)
+{
+    if (remove(fileName) < 0)
+    {
+        perror("Error deleting file");
+        return;
+    }
+}
+
 void CreateFile(char *fileName) {}
-void RenameFile(char *fileName, char *newName) {}
 void EditFile(char *fileName) {}
-void DeleteFile(char *fileName) {}
 void MoveFile(char *sourceFile, char *destinationFile) {}
 void DuplicateFile(char *sourceFile, char *destinationFile) {}
 void SearchFile(char *dirName, char *fileName) {}
 void DisplayDirectoryTree(char *dirName) {}
-void GetBasicFileInformation(char *fileName) {}
-void GetAdvancedFileInformation(char *fileName) {}
-void GetBasicDirectoryInformation(char *dirName) {}
-void GetAdvancedDirectoryInformation(char *dirName) {}
+
+void GetBasicFileInformation(char *fileName)
+{
+    struct stat fileInfo;
+    if (stat(fileName, &fileInfo) < 0)
+    {
+        perror("Error getting file information");
+        return;
+    }
+
+    printf("File name: %s\n", fileName);
+    printf("Size: %ld bytes\n", (long)fileInfo.st_size);
+    printf("Last modified: %s", ctime(&fileInfo.st_mtime));
+}
+void GetAdvancedFileInformation(char *fileName)
+{
+    struct stat file_info;
+    if (stat(fileName, &file_info) < 0)
+    {
+        perror("Error getting file information");
+        return;
+    }
+
+    printf("File name: %s\n", fileName);
+    printf("Size: %ld bytes\n", (long)file_info.st_size);
+    printf("User ID: %u\n", file_info.st_uid);
+    printf("Group ID: %u\n", file_info.st_gid);
+    printf("Permissions: %o\n", file_info.st_mode & 0777);
+    printf("Last modified: %s", ctime(&file_info.st_mtime));
+}
+void GetBasicDirectoryInformation(char *dirName)
+{
+    struct stat dirInfo;
+    if (stat(dirName, &dirInfo) < 0)
+    {
+        perror("Error getting directory information");
+        return;
+    }
+
+    printf("Directory name: %s\n", dirName);
+    printf("Last modified: %s", ctime(&dirInfo.st_mtime));
+}
+void GetAdvancedDirectoryInformation(char *dirName)
+{
+    struct stat dirInfo;
+    if (stat(dirName, &dirInfo) < 0)
+    {
+        perror("Error getting directory information");
+        return;
+    }
+
+    printf("Directory name: %s\n", dirName);
+    printf("User ID: %u\n", dirInfo.st_uid);
+    printf("Group ID: %u\n", dirInfo.st_gid);
+    printf("Permissions: %o\n", dirInfo.st_mode & 0777);
+    printf("Last modified: %s", ctime(&dirInfo.st_mtime));
+}

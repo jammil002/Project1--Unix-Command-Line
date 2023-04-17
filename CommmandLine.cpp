@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <ftw.h>
 #include <sys/wait.h>
 #include <filesystem>
 #include <sys/stat.h>
@@ -479,6 +480,7 @@ void CreateFile(char *fileName)
 
     fclose(file);
 }
+
 void EditFile(char *fileName)
 {
     FILE *file = fopen(fileName, "a");
@@ -496,6 +498,7 @@ void EditFile(char *fileName)
     fputs(text, file);
     fclose(file);
 }
+
 void DuplicateFile(char *sourceFile, char *destinationFile)
 {
     FILE *src = fopen(sourceFile, "r");
@@ -522,9 +525,53 @@ void DuplicateFile(char *sourceFile, char *destinationFile)
     fclose(src);
     fclose(dest);
 }
-void MoveFile(char *sourceFile, char *destinationFile) {}
-void SearchFile(char *dirName, char *fileName) {}
-void DisplayDirectoryTree(char *dirName) {}
+
+void MoveFile(char *sourceFile, char *destinationFile)
+{
+    if (rename(sourceFile, destinationFile) < 0)
+    {
+        perror("Error moving file");
+    }
+}
+
+char *searchedFile;
+
+int searchCallback(const char *path, const struct stat *sb, int typeflag, struct FTW *ftwbuf)
+{
+    if (typeflag == FTW_F && strcmp(searchedFile, path) == 0)
+    {
+        printf("File found: %s\n", path);
+        return 1;
+    }
+    return 0;
+}
+
+void SearchFile(char *dirName, char *fileName)
+{
+    searchedFile = fileName;
+    if (nftw(dirName, searchCallback, 20, FTW_PHYS) == 0)
+    {
+        printf("File not found.\n");
+    }
+}
+
+int displayEntry(const char *path, const struct stat *sb, int typeflag, struct FTW *ftwbuf)
+{
+    for (int i = 0; i < ftwbuf->level; i++)
+    {
+        printf("    ");
+    }
+    printf("%s\n", path);
+    return 0;
+}
+
+void DisplayDirectoryTree(char *dirName)
+{
+    if (nftw(dirName, displayEntry, 20, FTW_PHYS) == -1)
+    {
+        perror("Error displaying directory tree");
+    }
+}
 
 void GetBasicFileInformation(char *fileName)
 {
@@ -539,6 +586,7 @@ void GetBasicFileInformation(char *fileName)
     printf("Size: %ld bytes\n", (long)fileInfo.st_size);
     printf("Last modified: %s", ctime(&fileInfo.st_mtime));
 }
+
 void GetAdvancedFileInformation(char *fileName)
 {
     struct stat file_info;
@@ -555,6 +603,7 @@ void GetAdvancedFileInformation(char *fileName)
     printf("Permissions: %o\n", file_info.st_mode & 0777);
     printf("Last modified: %s", ctime(&file_info.st_mtime));
 }
+
 void GetBasicDirectoryInformation(char *dirName)
 {
     struct stat dirInfo;
@@ -567,6 +616,7 @@ void GetBasicDirectoryInformation(char *dirName)
     printf("Directory name: %s\n", dirName);
     printf("Last modified: %s", ctime(&dirInfo.st_mtime));
 }
+
 void GetAdvancedDirectoryInformation(char *dirName)
 {
     struct stat dirInfo;

@@ -11,6 +11,7 @@
 #define MAX_COMMANDS 10
 #define MAX_INPUT_LENGTH 256
 
+// Shell Functions
 void ExecuteCommands(char *commands[], int num_commands);
 void HandleInput(char *input);
 void BatchMode(FILE *batch_file);
@@ -25,6 +26,7 @@ void RenameDirectory(char *dirname, char *newName);
 void DeleteDirectory(char *dirname);
 void CreateFile(char *fileName);
 void RenameFile(char *fileName, char *newName);
+void ChangeDirectory(char *dirName);
 void EditFile(char *fileName);
 void DeleteFile(char *fileName);
 void MoveFile(char *sourceFile, char *destinationFile);
@@ -285,6 +287,17 @@ void HandleInput(char *input)
             printf("TurtleError > Get Advanced Directory Info Command Syntax - gadinfo <directory-name>");
         }
     }
+    else if (strcmp(tokens[0], "cd") == 0)
+    {
+        if (num_tokens < 2)
+        {
+            fprintf(stderr, "Usage: cd <directory>\n");
+        }
+        else
+        {
+            ChangeDirectory(tokens[1]);
+        }
+    }
     else
     {
         ExecuteCommands(tokens, num_tokens);
@@ -362,6 +375,14 @@ void TokenizeInput(char *input, char *tokens[], int *num_tokens)
 }
 
 // File Functions
+void ChangeDirectory(char *dirName)
+{
+    if (chdir(dirName) < 0)
+    {
+        perror("Error changing directory");
+    }
+}
+
 void CreateDirectory(char *dirname)
 {
     if (mkdir(dirname, 0755) < 0)
@@ -376,6 +397,7 @@ void CreateDirectory(char *dirname)
     newDir->next = fileDirectory;
     fileDirectory = newDir;
 }
+
 void RenameDirectory(char *dirname, char *newName)
 {
     if (rename(dirname, newName) < 0)
@@ -396,6 +418,7 @@ void RenameDirectory(char *dirname, char *newName)
         cur = cur->next;
     }
 }
+
 void DeleteDirectory(char *dirname)
 {
     if (rmdir(dirname) < 0)
@@ -434,6 +457,7 @@ void RenameFile(char *fileName, char *newName)
         return;
     }
 }
+
 void DeleteFile(char *fileName)
 {
     if (remove(fileName) < 0)
@@ -443,10 +467,62 @@ void DeleteFile(char *fileName)
     }
 }
 
-void CreateFile(char *fileName) {}
-void EditFile(char *fileName) {}
+void CreateFile(char *fileName)
+{
+    FILE *file = fopen(fileName, "w");
+
+    if (file == NULL)
+    {
+        perror("Error creating file");
+        return;
+    }
+
+    fclose(file);
+}
+void EditFile(char *fileName)
+{
+    FILE *file = fopen(fileName, "a");
+
+    if (file == NULL)
+    {
+        perror("Error opening file");
+        return;
+    }
+
+    char text[256];
+    printf("Enter the text to append: ");
+    fgets(text, sizeof(text), stdin);
+
+    fputs(text, file);
+    fclose(file);
+}
+void DuplicateFile(char *sourceFile, char *destinationFile)
+{
+    FILE *src = fopen(sourceFile, "r");
+    if (src == NULL)
+    {
+        perror("Error opening source file");
+        return;
+    }
+
+    FILE *dest = fopen(destinationFile, "w");
+    if (dest == NULL)
+    {
+        perror("Error creating destination file");
+        fclose(src);
+        return;
+    }
+
+    int ch;
+    while ((ch = fgetc(src)) != EOF)
+    {
+        fputc(ch, dest);
+    }
+
+    fclose(src);
+    fclose(dest);
+}
 void MoveFile(char *sourceFile, char *destinationFile) {}
-void DuplicateFile(char *sourceFile, char *destinationFile) {}
 void SearchFile(char *dirName, char *fileName) {}
 void DisplayDirectoryTree(char *dirName) {}
 
